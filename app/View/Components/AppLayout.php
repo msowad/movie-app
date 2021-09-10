@@ -11,7 +11,7 @@ class AppLayout extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(public string $header = '')
     {
         //
     }

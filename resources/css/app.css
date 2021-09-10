@@ -5,3 +5,19 @@
 .container {
     @apply px-4;
 }
+
+@layer utilities {
+    @variants responsive {
+        .position-initial {
+            position: initial;
+        }
+
+        .d-block {
+            display: block !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+    }
+}
