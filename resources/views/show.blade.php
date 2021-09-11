@@ -14,26 +14,28 @@
             {{ $movie['overview'] }}
           </p>
 
-          <div class="mt-8">
-            <h2 class="font-semibold mb-4">Featured Crew</h2>
-            <div class="flex">
-              @foreach (collect($movie['credits']['crew'])->where('profile_path', '!=', null)->take(2)
+          @if (count($movie['credits']['crew']) > 0)
+            <div class="mt-8">
+              <h2 class="font-semibold mb-4">Featured Crew</h2>
+              <div class="flex">
+                @foreach (collect($movie['credits']['crew'])->where('profile_path', '!=', null)->take(2)
     as $crew)
-                <div class="mr-8 flex items-center">
-                  <img class="mr-2 rounded"
-                       src="{{ 'https://image.tmdb.org/t/p/w45' . $crew['profile_path'] }}"
-                       alt="{{ $crew['name'] }}">
-                  <div>
-                    <h6 class="text-primary-300">{{ $crew['name'] }}</h6>
-                    <p class="text-sm text-primary-400">{{ $crew['job'] }}</p>
+                  <div class="mr-8 flex items-center">
+                    <img class="mr-2 rounded"
+                         src="{{ 'https://image.tmdb.org/t/p/w45' . $crew['profile_path'] }}"
+                         alt="{{ $crew['name'] }}">
+                    <div>
+                      <h6 class="text-primary-300">{{ $crew['name'] }}</h6>
+                      <p class="text-sm text-primary-400">{{ $crew['job'] }}</p>
+                    </div>
                   </div>
-                </div>
-              @endforeach
+                @endforeach
+              </div>
             </div>
-          </div>
+          @endif
 
 
-          @if ($movie['videos']['results'][0])
+          @if (array_key_exists('results', $movie['videos']) && count($movie['videos']['results']) > 0)
             <a target="_blank"
                href="https://www.youtube.com/watch?v={{ $movie['videos']['results'][0]['key'] }}"
                class="inline-flex mt-12 px-3 py-4 bg-secondary-500 rounded items-center gap-2 shadow-lg hover:bg-secondary-600 focus:outline-none focus:ring-4 transition ease-in-out focus:ring-secondary-800">
@@ -60,7 +62,9 @@
         <h2 class="text-lg tracking-wider font-semibold">
           Casts
         </h2>
-        <p class="text-secondary-500">{{ count($movie['credits']['cast']) - 6 }} more</p>
+        @if (count($movie['credits']['cast']) > 6)
+          <p class="text-secondary-500">{{ count($movie['credits']['cast']) - 6 }} more</p>
+        @endif
       </div>
 
       <div
