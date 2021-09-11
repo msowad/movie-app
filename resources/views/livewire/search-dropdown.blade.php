@@ -1,7 +1,19 @@
-<div>
-  <input autofocus wire:model.debounce.500ms="search" x-ref="search" type="search"
-         placeholder="Search"
-         class="w-64 py-2 pl-10 pr-3 rounded-full bg-gray-700 text-sm text-gray-200 focus:outline-none focus:shadow-md focus:ring-2 transition ease-in-out focus:ring-primary-600" />
+<div x-data="{ isOpen: true }" @click.away="isOpen = false">
+  <input @focus="isOpen = true" @keydown="isOpen = true" @keydown.escape.window="isOpen = false"
+         @keydown.shift.tab="isOpen = false" autofocus wire:model.debounce.500ms="search"
+         x-ref="search" type="text" placeholder="Search"
+         class="w-64 py-2 pl-10 pr-9 rounded-full bg-gray-700 text-sm text-gray-200 focus:outline-none focus:shadow-md focus:ring-2 transition ease-in-out focus:ring-primary-600" />
+
+  @if (strlen($search) > 0)
+    <button class="absolute focus:outline-none" style="top: 6px; right: 6px;"
+            wire:click="resetSearch">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </button>
+  @endif
 
   <div wire:loading.delay wire:target="search" class="absolute left-0" style="top: -2px;">
     <?xml version="1.0" encoding="utf-8"?>
@@ -27,12 +39,14 @@
   </div>
 
   @if (strlen($search) > 1)
-    <div class="absolute bg-primary-600 rounded w-64 mt-4 shadow-lg z-50">
+    <div class="absolute bg-primary-600 rounded w-64 mt-4 shadow-lg z-50" x-show="isOpen"
+         x-transition>
       <ul class="overflow-y-auto search-list" style="max-height: calc(100vh - 85px)">
         @forelse ( $results as $result)
-          <li class="border-b border-primary-700">
+          <li class="border-b border-primary-700 focus:outline-none focus:bg-gray-700"
+              @if ($loop->last)@keydown.tab="isOpen = false" @endif>
             <a href="{{ route('movies.show', $result['id']) }}"
-               class="transition rounded hover:bg-gray-700 px-3 py-3 flex items-center">
+               class="transition rounded hover:bg-gray-700 px-3 py-3 flex items-center focus:outline-none focus:bg-gray-700">
               @if ($result['poster_path'])
                 <img class="mr-2 rounded"
                      src="{{ 'https://image.tmdb.org/t/p/w45' . $result['poster_path'] }}"

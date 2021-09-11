@@ -10,6 +10,16 @@ class SearchDropdown extends Component
     public $search  = '';
     public $results = [];
 
+    public function render()
+    {
+        return view('livewire.search-dropdown');
+    }
+
+    public function resetSearch()
+    {
+        $this->search = '';
+    }
+
     public function updatedSearch()
     {
         if (strlen($this->search) > 1) {
@@ -19,10 +29,5 @@ class SearchDropdown extends Component
         } else {
             $this->results = [];
         }
-    }
-
-    public function render()
-    {
-        return view('livewire.search-dropdown');
     }
 }
