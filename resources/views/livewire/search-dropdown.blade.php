@@ -1,8 +1,8 @@
-<div x-data="{ isOpen: true }" @click.away="isOpen = false">
+<div x-data="{ isOpen: true }" @click.away="isOpen = false" class="relative">
   <input @focus="isOpen = true" @keydown="isOpen = true" @keydown.escape.window="isOpen = false"
          @keydown.shift.tab="isOpen = false" autofocus wire:model.debounce.500ms="search"
-         x-ref="search" type="text" placeholder="Search"
-         class="w-64 py-2 pl-10 pr-9 rounded-full bg-gray-700 text-sm text-gray-200 focus:outline-none focus:shadow-md focus:ring-2 transition ease-in-out focus:ring-primary-600" />
+         id="search" type="text" placeholder="Search"
+         class="w-full md:w-64 py-2 pl-10 pr-9 rounded-full bg-gray-700 text-sm text-gray-200 focus:outline-none focus:shadow-md focus:ring-2 transition ease-in-out focus:ring-primary-600" />
 
   @if (strlen($search) > 0)
     <button class="absolute focus:outline-none" style="top: 6px; right: 6px;"
@@ -39,7 +39,7 @@
   </div>
 
   @if (strlen($search) > 1)
-    <div class="absolute bg-primary-600 rounded w-64 mt-4 shadow-lg z-50" x-show="isOpen"
+    <div class="absolute bg-primary-600 rounded w-full md:w-64 mt-4 shadow-lg z-50" x-show="isOpen"
          x-transition>
       <ul class="overflow-y-auto search-list" style="max-height: calc(100vh - 85px)">
         @forelse ( $results as $result)

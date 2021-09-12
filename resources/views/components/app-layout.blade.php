@@ -28,7 +28,7 @@
 
 <body class="font-sans bg-primary-800 text-white">
   <nav class="border-b border-primary-700">
-    <div x-data="{ openNav: false, openSearch: false }"
+    <div x-data="{ openNav: false, openSearch: true }"
          class="container mx-auto flex items-center justify-between py-5">
       <div class="md:flex items-center">
         <a href="{{ route('movies.index') }}">
@@ -75,7 +75,7 @@
         <button x-show="!openSearch" x-transition:enter.duration.400ms
                 x-transition:leave.duration.1ms x-on:click="
             openSearch = !openSearch
-            setTimeout(() => $refs.search.focus(),100)
+            setTimeout(() => document.querySelector('#search').focus(), 100)
         "
                 class="lg:hidden block focus:ring-2 focus:outline-none ring-primary-500 rounded-full p-1 transition">
           <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -85,7 +85,7 @@
         </button>
 
         <div x-show="openSearch" @click.away="openSearch = false" x-transition style="display: none"
-             class="lg:d-block relative">
+             class="lg:d-block md:position-initial absolute top-0 left-0 right-0 md:bg-transparent bg-primary-500 p-4 md:p-0">
           <livewire:search-dropdown />
         </div>
 
