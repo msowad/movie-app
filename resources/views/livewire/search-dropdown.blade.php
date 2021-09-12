@@ -1,7 +1,7 @@
 <div x-data="{ isOpen: true }" @click.away="isOpen = false" class="relative">
   <input @focus="isOpen = true" @keydown="isOpen = true" @keydown.escape.window="isOpen = false"
-         @keydown.shift.tab="isOpen = false" autofocus wire:model.debounce.500ms="search"
-         id="search" type="text" placeholder="Search"
+         @keydown.shift.tab="isOpen = false" wire:model.debounce.500ms="search" id="search"
+         type="text" placeholder="Search (Press '/')"
          class="w-full md:w-64 py-2 pl-10 pr-9 rounded-full bg-gray-700 text-sm text-gray-200 focus:outline-none focus:shadow-md focus:ring-2 transition ease-in-out focus:ring-primary-600" />
 
   @if (strlen($search) > 0)

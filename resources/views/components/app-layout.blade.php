@@ -28,8 +28,16 @@
 
 <body class="font-sans bg-primary-800 text-white">
   <nav class="border-b border-primary-700">
-    <div x-data="{ openNav: false, openSearch: true }"
-         class="container mx-auto flex items-center justify-between py-5">
+    <div x-data="{ openNav: false, openSearch: false }" @keydown.window="
+  if(event.keyCode == 39) {
+      document.querySelector('#nextImageButton').click()
+    } else if(event.keyCode == 37) {
+      document.querySelector('#prevImageButton').click()
+  } else if(event.keyCode == 191) {
+      event.preventDefault()
+      document.querySelector('#search').focus()
+  }
+" class="container mx-auto flex items-center justify-between py-5">
       <div class="md:flex items-center">
         <a href="{{ route('movies.index') }}">
           <x-app.logo />
