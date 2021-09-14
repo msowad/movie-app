@@ -23,7 +23,7 @@ class MovieController extends Controller
             ->get(config('services.tmdb.base_url') . '/genre/movie/list')
             ->json()['genres'];
 
-        return view('index', new MoviesViewModel($popularMovies, $nowPlayingMovies, $genres));
+        return view('movies.index', new MoviesViewModel($popularMovies, $nowPlayingMovies, $genres));
     }
 
     public function create()
@@ -42,7 +42,7 @@ class MovieController extends Controller
             ->get(config('services.tmdb.base_url') . "/movie/$id?append_to_response=credits,images,videos")
             ->json();
 
-        return view('show', new MovieViewModel($movie));
+        return view('movies.show', new MovieViewModel($movie));
     }
 
     /**

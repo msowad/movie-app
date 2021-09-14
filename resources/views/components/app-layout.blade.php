@@ -64,7 +64,8 @@
             <a href="#" class="hover:text-primary-300 transition">TV Show</a>
           </li>
           <li class="md:ml-6 lg:ml-8 md:mt-0 mt-4">
-            <a href="#" class="hover:text-primary-300 transition">Actors</a>
+            <a href="{{ route('actors.index') }}"
+               class="hover:text-primary-300 transition">Actors</a>
           </li>
         </ul>
       </div>
@@ -118,6 +119,8 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   @livewireScripts
+
+  @stack('script')
 </body>
 
 </html>

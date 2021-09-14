@@ -1,3 +1,5 @@
+@props(['movie', 'showSpecification' => true, 'showGenres' => true])
+
 <div>
   <a href="{{ route('movies.show', $movie['id']) }}">
     <img class="hover:opacity-80 transition ease-in-out duration-150"
@@ -10,10 +12,14 @@
       {{ $movie['title'] }}
     </a>
 
-    <x-movie.specification :vote-average="$movie['vote_average']"
-                           :release-date="$movie['release_date']" />
+    @if ($showSpecification)
+      <x-movie.specification :vote-average="$movie['vote_average']"
+                             :release-date="$movie['release_date']" />
+    @endif
   </div>
-  <div class="mt-1 text-primary-300">
-    {{ $movie['genres'] }}
-  </div>
+  @if ($showGenres)
+    <div class="mt-1 text-primary-300">
+      {{ $movie['genres'] }}
+    </div>
+  @endif
 </div>
