@@ -66,6 +66,8 @@ class ActorsController extends Controller
             ->get(config('services.tmdb.base_url') . "/person/$id/combined_credits")
             ->json();
 
+        // dd($credits['cast'][0]);
+
         return view('actors.show', new ActorViewModel($actor, $social, $credits));
     }
 

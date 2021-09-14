@@ -19,7 +19,7 @@ class ActorsViewModel extends ViewModel
             return collect($actor)->merge([
                 'profile_path' => $actor['profile_path']
                 ? 'https://image.tmdb.org/t/p/w500' . $actor['profile_path']
-                : 'https:ui-avatars.com/api?size=500$background=5555&color=fff&name=' . $actor['profile_path'],
+                : 'https:ui-avatars.com/api?size=500$background=5555&color=ff$name=' . $actor['profile_path'],
                 'url'          => route('actors.show', $actor['id']),
                 'known_for'    => $knownFor
                     ->where('media_type', 'movie')
