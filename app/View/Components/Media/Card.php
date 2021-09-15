@@ -21,9 +21,12 @@ class Card extends Component
         public bool $showSpecification = true,
         public bool $showGenres = true
     ) {
-        $this->title       = isset($media['title']) ? $media['title'] : $media['name'];
+        $this->title = isset($media['title']) ? $media['title']
+        : (isset($media['name']) ? $media['name'] : 'Untitled');
+
         $this->releaseDate = isset($media['release_date']) ? $media['release_date']
         : (isset($media['first_air_date']) ? $media['first_air_date'] : null);
+
         $routeName = isset($media['title']) ? 'movies' : 'tv';
         $this->url = route($routeName . '.show', $media['id']);
     }
