@@ -39,16 +39,10 @@ class ViewMoviesTest extends TestCase
         ]);
 
         $response = $this->get(route('movies.show', 12345));
-
-        $response->assertSuccessful();
-        $response->assertSee('Fake Title');
-        $response->assertSee('77%');
-        $response->assertSee('Aug 12, 2021');
-        $response->assertSee('Thriller');
-        $response->assertSee('Horror');
-        $response->assertSee('Fake Crew');
-        $response->assertSee('Fake Actor');
-        $response->assertSee('Fake');
+        $response->assertSee('Fake Jumanji');
+        $response->assertSee('Jeanne McCarthy');
+        $response->assertSee('Casting Director');
+        $response->assertSee('Dwayne Johnson');
     }
 
     /** @test */
@@ -94,54 +88,48 @@ class ViewMoviesTest extends TestCase
     private function fakeSingleMovie()
     {
         return Http::response([
-            "adult"             => false,
-            "backdrop_path"     => "/pUc51UUQb1lMLVVkDCaZVsCo37U.jpg",
-            "budget"            => 10000000,
-            "genres"            => [
-                [
-                    "id"   => 53,
-                    "name" => "Thriller",
-                ],
-                [
-                    "id"   => 27,
-                    "name" => "Horror",
-                ],
+            "adult"         => false,
+            "backdrop_path" => "/hreiLoPysWG79TsyQgMzFKaOTF5.jpg",
+            "genres"        => [
+                ["id" => 28, "name" => "Action"],
+                ["id" => 12, "name" => "Adventure"],
+                ["id" => 35, "name" => "Comedy"],
+                ["id" => 14, "name" => "Fantasy"],
             ],
-            "homepage"          => "https://www.fakemovie.com",
-            "id"                => 12345,
-            "imdb_id"           => "tt6246322",
-            "original_language" => "en",
-            "original_title"    => "Fake Title",
-            "overview"          => "The Blind Man has been hiding out for several years",
-            "popularity"        => 3347,
-            "poster_path"       => "/hRMfgGFRAZIlvwVWy8DYJdLTpvN.jpg",
-            "release_date"      => "2021-08-12",
-            "revenue"           => 37000009,
-            "runtime"           => 98,
-            "status"            => "Released",
-            "tagline"           => "Bad things happen to bad people.",
-            "title"             => "Fake Title",
-            "video"             => false,
-            "vote_average"      => 7.7,
-            "vote_count"        => 413,
-            "credits"           => [
+            "homepage"      => "http://jumanjimovie.com",
+            "id"            => 12345,
+            "overview"      => "As the gang return to Jumanji to rescue one of their own, they discover that nothing is as they expect. The players will have to brave parts unknown and unexplored.",
+            "poster_path"   => "/bB42KDdfWkOvmzmYkmK58ZlCa9P.jpg",
+            "release_date"  => "2019-12-04",
+            "runtime"       => 123,
+            "title"         => "Fake Jumanji: The Next Level",
+            "vote_average"  => 6.8,
+            "credits"       => [
                 "cast" => [
                     [
-                        "name"          => "Fake Actor",
-                        "original_name" => "Original Name",
-                        "profile_path"  => "/h7ZoTwpELoz1IlIgx0ujoA2p9Sp.jpg",
-                        "character"     => "The Fake Man",
+                        "cast_id"      => 2,
+                        "character"    => "Dr. Smolder Bravestone",
+                        "credit_id"    => "5aac3960c3a36846ea005147",
+                        "gender"       => 2,
+                        "id"           => 18918,
+                        "name"         => "Dwayne Johnson",
+                        "order"        => 0,
+                        "profile_path" => "/kuqFzlYMc2IrsOyPznMd1FroeGq.jpg",
                     ],
                 ],
                 "crew" => [
                     [
-                        "name"         => "Fake Crew",
-                        "profile_path" => "/8gssvwiPrFRuFRlr5ruKx68k1Jl.jpg",
-                        "job"          => "Producer",
+                        "credit_id"    => "5d51d4ff18b75100174608d8",
+                        "department"   => "Production",
+                        "gender"       => 1,
+                        "id"           => 546,
+                        "job"          => "Casting Director",
+                        "name"         => "Jeanne McCarthy",
+                        "profile_path" => "/kuqFzlYMc2IrsOyPznMd1FroeGq.jpg",
                     ],
                 ],
             ],
-            "videos"            => [
+            "videos"        => [
                 "results" => [
                     [
                         "id"         => "5d1a1a9b30aa3163c6c5fe57",
@@ -155,7 +143,7 @@ class ViewMoviesTest extends TestCase
                     ],
                 ],
             ],
-            "images"            => [
+            "images"        => [
                 "backdrops" => [
                     [
                         "aspect_ratio" => 1.7777777777778,
@@ -165,6 +153,11 @@ class ViewMoviesTest extends TestCase
                         "vote_average" => 5.388,
                         "vote_count"   => 4,
                         "width"        => 3840,
+                    ],
+                ],
+                "posters"   => [
+                    [
+
                     ],
                 ],
             ],
