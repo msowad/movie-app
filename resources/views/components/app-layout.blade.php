@@ -61,7 +61,8 @@
                class="hover:text-primary-300 transition">Movies</a>
           </li>
           <li class="md:ml-6 lg:ml-8 md:mt-0 mt-4">
-            <a href="#" class="hover:text-primary-300 transition">TV Show</a>
+            <a href="{{ route('tv.index') }}" class="hover:text-primary-300 transition">TV
+              Show</a>
           </li>
           <li class="md:ml-6 lg:ml-8 md:mt-0 mt-4">
             <a href="{{ route('actors.index') }}"

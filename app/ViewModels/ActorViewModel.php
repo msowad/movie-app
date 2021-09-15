@@ -41,16 +41,15 @@ class ActorViewModel extends ViewModel
             ->only('twitter', 'facebook', 'instagram');
     }
 
-    public function knownForMovies()
+    public function knownFor()
     {
         $castMovies = collect($this->credits)->get('cast');
 
-        return collect($castMovies)->where('media_type', 'movie')->sortByDesc('popularity')->take(5)
-            ->map(function ($movie) {
-                return collect($movie)->merge([
-                    'poster_path' => 'https://image.tmdb.org/t/p/w500' . $movie['poster_path'],
-                    'title'       => $movie['title'],
-                ])->only('title', 'poster_path', 'id');
+        return collect($castMovies)->sortByDesc('popularity')->take(5)
+            ->map(function ($media) {
+                return collect($media)->merge([
+                    'poster_path' => 'https://image.tmdb.org/t/p/w500' . $media['poster_path'],
+                ])->only('name', 'poster_path', 'id');
             });
     }
 
@@ -72,7 +71,7 @@ class ActorViewModel extends ViewModel
                 'release_year' => $releaseDate ? Carbon::parse($releaseDate)->format('Y') : 'Future',
                 'title'        => $title,
                 'character'    => isset($credit['character']) ? $credit['character'] : '',
-                'url'          => $credit['media_type'] == 'movie' ? route('movies.show', $credit['id']) : '#',
+                'url'          => $credit['media_type'] == 'movie' ? route('movies.show', $credit['id']) : route('tv.show', $credit['id']),
             ])->only('release_date', 'release_year', 'title', 'character', 'id', 'url');
         })->sortByDesc('release_year');
     }

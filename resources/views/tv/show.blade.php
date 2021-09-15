@@ -2,22 +2,22 @@
   <div class="border-b border-primary-700">
     <div class="container mx-auto py-10">
       <div class="grid gap-10 grid-cols-1 md:grid-cols-3">
-        <img src="{{ $movie['poster_path'] }}" alt="{{ $movie['title'] }}">
+        <img src="{{ $tv['poster_path'] }}" alt="{{ $tv['name'] }}">
         <div class="col-span-1 md:col-span-2">
-          <h2 class="mb-3 text-2xl font-semibold">{{ $movie['title'] }}</h2>
+          <h2 class="mb-3 text-2xl font-semibold">{{ $tv['name'] }}</h2>
 
-          <x-media.specification :genres="$movie['genres']" :vote-average="$movie['vote_average']"
-                                 :release-date="$movie['release_date']" />
+          <x-media.specification :genres="$tv['genres']" :vote-average="$tv['vote_average']"
+                                 :release-date="$tv['first_air_date']" />
 
           <p class="mt-6 text-sm tracking-wide text-primary-300">
-            {{ $movie['overview'] }}
+            {{ $tv['overview'] }}
           </p>
 
-          @if (count($movie['crew']) > 0)
+          @if (count($tv['crew']) > 0)
             <div class="mt-8">
               <h2 class="font-semibold mb-4">Featured Crew</h2>
               <div class="flex">
-                @foreach ($movie['crew'] as $crew)
+                @foreach ($tv['crew'] as $crew)
                   <div class="mr-8 flex items-center">
                     <img class="mr-2 rounded"
                          src="{{ 'https://image.tmdb.org/t/p/w45' . $crew['profile_path'] }}"
@@ -32,13 +32,30 @@
             </div>
           @endif
 
+          @if (count($tv['creators']) > 0)
+            <div class="mt-8">
+              <h2 class="font-semibold mb-4">Creators</h2>
+              <div class="flex">
+                @foreach ($tv['creators'] as $creator)
+                  <div class="mr-8 flex items-center">
+                    <img class="mr-2 rounded" src="{{ $creator['profile_path'] }}"
+                         alt="{{ $creator['name'] }}">
+                    <div>
+                      <h6 class="text-primary-300">{{ $creator['name'] }}</h6>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          @endif
+
           <div class="flex space-x-4">
-            @if ($movie['video_key'])
-              <x-media.trailer :key="$movie['video_key']" />
+            @if ($tv['video_key'])
+              <x-media.trailer :key="$tv['video_key']" />
             @endif
 
-            @if ($movie['homepage'])
-              <a href="{{ $movie['homepage'] }}" target="_blank"
+            @if ($tv['homepage'])
+              <a href="{{ $tv['homepage'] }}" target="_blank"
                  class="inline-flex mt-12 px-3 py-4 bg-primary-500 rounded items-center gap-2 shadow-lg hover:bg-primary-600 focus:outline-none focus:ring-4 transition ease-in-out focus:ring-primary-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="-rotate-45 transform h-5 w-5"
                      viewBox="0 0 20 20" fill="currentColor">
@@ -63,14 +80,14 @@
         <h2 class="text-lg tracking-wider font-semibold">
           Casts
         </h2>
-        @if ($movie['extra_casts'] > 0)
-          <p class="text-secondary-500">{{ $movie['extra_casts'] }} more</p>
+        @if ($tv['extra_casts'] > 0)
+          <p class="text-secondary-500">{{ $tv['extra_casts'] }} more</p>
         @endif
       </div>
 
       <div
            class="pt-10 grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-        @foreach ($movie['casts'] as $cast)
+        @foreach ($tv['casts'] as $cast)
           <x-media.cast :id="$cast['id']" :image="$cast['profile_path']" :name="$cast['name']"
                         :character="$cast['character']" />
         @endforeach
@@ -78,5 +95,5 @@
     </div>
   </div>
 
-  <x-media.images :images="$movie['images']" />
+  <x-media.images :images="$tv['images']" />
 </x-app-layout>

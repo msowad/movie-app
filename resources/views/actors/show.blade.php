@@ -85,7 +85,7 @@
     </div>
   </div>
 
-  @if ($knownForMovies->count() > 0)
+  @if ($knownFor->count() > 0)
     <div class="border-b border-primary-700 py-10">
       <div class="container mx-auto">
         <div class="flex justify-between">
@@ -95,8 +95,8 @@
         </div>
         <div
              class="pt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          @foreach ($knownForMovies as $movie)
-            <x-movie.card :movie="$movie" :show-specification="false" :show-genres="false" />
+          @foreach ($knownFor as $media)
+            <x-media.card :media="$media" :show-specification="false" :show-genres="false" />
           @endforeach
         </div>
       </div>
