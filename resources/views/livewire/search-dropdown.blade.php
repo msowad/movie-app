@@ -47,7 +47,7 @@
               @if ($loop->last)@keydown.tab="isOpen = false" @endif>
             <a href="{{ route('movies.show', $result['id']) }}"
                class="transition rounded hover:bg-gray-700 px-3 py-3 flex items-center focus:outline-none focus:bg-gray-700">
-              @if ($result['poster_path'])
+              @if (isset($result['poster_path']))
                 <img class="mr-2 rounded"
                      src="{{ 'https://image.tmdb.org/t/p/w45' . $result['poster_path'] }}"
                      alt="{{ $result['title'] }}">

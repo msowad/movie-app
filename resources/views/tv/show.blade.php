@@ -50,11 +50,11 @@
           @endif
 
           <div class="flex space-x-4">
-            @if ($tv['video_key'])
+            @if (isset($tv['video_key']))
               <x-media.trailer :key="$tv['video_key']" />
             @endif
 
-            @if ($tv['homepage'])
+            @if (isset($tv['homepage']))
               <a href="{{ $tv['homepage'] }}" target="_blank"
                  class="inline-flex mt-12 px-3 py-4 bg-primary-500 rounded items-center gap-2 shadow-lg hover:bg-primary-600 focus:outline-none focus:ring-4 transition ease-in-out focus:ring-primary-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="-rotate-45 transform h-5 w-5"

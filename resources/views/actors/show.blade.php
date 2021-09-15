@@ -15,7 +15,7 @@
           </p>
 
           <div class="flex space-x-4 mt-12">
-            @if ($actor['homepage'])
+            @if (isset($actor['homepage']))
               <a href="{{ $actor['homepage'] }}" target="_blank"
                  class="text-primary-400 hover:text-primary-500 focus:outline-none focus:ring-4 transition ease-in-out focus:ring-primary-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -25,7 +25,7 @@
                 </svg>
               </a>
             @endif
-            @if ($social['facebook'])
+            @if (isset($social['facebook']))
               <a href="{{ $social['facebook'] }}" target="_blank"
                  class="text-primary-400 hover:text-primary-500 focus:outline-none focus:ring-4 transition ease-in-out focus:ring-primary-800">
                 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -39,7 +39,7 @@
  v176h96V336h48L432,256z" />
               </a>
             @endif
-            @if ($social['instagram'])
+            @if (isset($social['instagram']))
               <a href="{{ $social['instagram'] }}" target="_blank"
                  class="text-primary-400 hover:text-primary-500 focus:outline-none focus:ring-4 transition ease-in-out focus:ring-primary-800">
                 <svg class="hover:opacity-75 w-6 h-6" enable-background="new 0 0 24 24" height="512"
@@ -60,7 +60,7 @@
                 </svg>
               </a>
             @endif
-            @if ($social['twitter'])
+            @if (isset($social['twitter']))
               <a href="{{ $social['twitter'] }}" target="_blank"
                  class="text-primary-400 hover:text-primary-500 focus:outline-none focus:ring-4 transition ease-in-out focus:ring-primary-800">
                 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
