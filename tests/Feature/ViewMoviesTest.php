@@ -2,9 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
-use Livewire\Livewire;
 use Tests\TestCase;
 
 class ViewMoviesTest extends TestCase
@@ -43,46 +41,6 @@ class ViewMoviesTest extends TestCase
         $response->assertSee('Jeanne McCarthy');
         $response->assertSee('Casting Director');
         $response->assertSee('Dwayne Johnson');
-    }
-
-    /** @test */
-    public function theSearchIsShowingCorrectInfo()
-    {
-        Http::fake([
-            'https://api.themoviedb.org/3/search/movie?query=fake' => $this->fakeSearchMovie(),
-        ]);
-
-        Livewire::test('search-dropdown')
-            ->assertDontSee('fake')
-            ->set('search', 'fake')
-            ->assertSee('1 day ago')
-            ->assertSee('Fake Searched Movie');
-    }
-
-    private function fakeSearchMovie()
-    {
-        return Http::response([
-            "page"          => 1,
-            "results"       => [
-                [
-                    "adult"             => false,
-                    "backdrop_path"     => "/pUc51UUQb1lMLVVkDCaZVsCo37U.jpg",
-                    "id"                => 482373,
-                    "original_language" => "en",
-                    "original_title"    => "Fake Searched Movie",
-                    "overview"          => "The Blind Man has been hiding out for several years in an isolated cabin and has taken in and raised a young girl orphaned from a devastating house fire. Their  ▶",
-                    "popularity"        => 2935.743,
-                    "poster_path"       => "/hRMfgGFRAZIlvwVWy8DYJdLTpvN.jpg",
-                    "release_date"      => Carbon::yesterday(),
-                    "title"             => "Fake Searched Movie",
-                    "video"             => false,
-                    "vote_average"      => 7.6,
-                    "vote_count"        => 433,
-                ],
-            ],
-            "total_pages"   => 68,
-            "total_results" => 1352,
-        ], 200);
     }
 
     private function fakeSingleMovie()
