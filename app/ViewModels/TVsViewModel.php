@@ -39,7 +39,7 @@ class TVsViewModel extends ViewModel
                 'vote_average'   => $show['vote_average'] * 10,
                 'genres'         => $formattedGenres,
                 'first_air_date' => Carbon::parse($show['first_air_date'])->format('M d, Y'),
-            ])->only('poster_path', 'vote_average', 'genres', 'first_air_date', 'name', 'id');
+            ]);
         });
     }
 }

@@ -28,13 +28,6 @@ class MovieViewModel extends ViewModel
             'casts'        => collect($this->movie['credits']['cast'])->where('profile_path', '!=', null)->take(6),
             'extra_casts'  => count($this->movie['credits']['cast']) - 6,
             'images'       => collect($this->movie['images']['backdrops'])->take(12),
-        ])
-            ->only(
-                'genres', 'homepage', 'id',
-                'overview', 'poster_path', 'release_date',
-                'title', 'vote_average', 'images',
-                'crew', 'images', 'video_key',
-                'casts', 'extra_casts'
-            );
+        ]);
     }
 }

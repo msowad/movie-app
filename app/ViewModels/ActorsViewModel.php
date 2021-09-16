@@ -28,7 +28,7 @@ class ActorsViewModel extends ViewModel
                         $knownFor->where('media_type', 'tv')->pluck('name')
                     )
                     ->implode(', '),
-            ])->only('profile_path', 'url', 'name', 'id', 'known_for');
+            ]);
         });
     }
 

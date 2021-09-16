@@ -37,8 +37,7 @@ class ActorViewModel extends ViewModel
                 'twitter'   => $this->social['twitter_id'] ? "https://twitter.com/" . $this->social['twitter_id'] : null,
                 'facebook'  => $this->social['facebook_id'] ? "https://www.facebook.com/" . $this->social['facebook_id'] : null,
                 'instagram' => $this->social['instagram_id'] ? "https://www.instagram.com/" . $this->social['instagram_id'] : null,
-            ])
-            ->only('twitter', 'facebook', 'instagram');
+            ]);
     }
 
     public function knownFor()
@@ -49,7 +48,7 @@ class ActorViewModel extends ViewModel
             ->map(function ($media) {
                 return collect($media)->merge([
                     'poster_path' => 'https://image.tmdb.org/t/p/w500' . $media['poster_path'],
-                ])->only('name', 'poster_path', 'id');
+                ]);
             });
     }
 
@@ -72,7 +71,7 @@ class ActorViewModel extends ViewModel
                 'title'        => $title,
                 'character'    => isset($credit['character']) ? $credit['character'] : '',
                 'url'          => $credit['media_type'] == 'movie' ? route('movies.show', $credit['id']) : route('tv.show', $credit['id']),
-            ])->only('release_date', 'release_year', 'title', 'character', 'id', 'url');
+            ]);
         })->sortByDesc('release_year');
     }
 }

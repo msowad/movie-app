@@ -98,12 +98,6 @@
              class="lg:d-block md:position-initial absolute top-0 left-0 right-0 md:bg-transparent bg-primary-500 p-4 md:p-0">
           <livewire:search-dropdown />
         </div>
-
-        <div class="ml-3">
-          <a href="#">
-            <img src="/img/avatar.jpg" alt="avatar" class="rounded-full w-8 h-8">
-          </a>
-        </div>
       </div>
     </div>
   </nav>
@@ -112,8 +106,11 @@
     {{ $slot }}
   </main>
 
-  <footer>
-
+  <footer class="mt-20 p-8 text-center bg-primary-700">
+    Powered By <a target="_blank"
+       class="underline text-secondary-500 hover:text-secondary-400 transition"
+       href="https://www.themoviedb.org/documentation/api">TMDb
+      API</a>
   </footer>
 
   <!-- Alpine Core -->

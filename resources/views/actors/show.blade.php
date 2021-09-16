@@ -104,7 +104,7 @@
   @endif
 
   @if ($credits->count() > 0)
-    <div class="border-b border-primary-700 py-10">
+    <div class="pt-10">
       <div class="container mx-auto">
         <div class="flex justify-between">
           <h2 class="text-lg tracking-wider font-semibold">
