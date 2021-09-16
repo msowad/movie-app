@@ -1,4 +1,4 @@
-![screenshot](https://i.ibb.co/MMYXtFr/Laravel-Movies-App-Screenshot.png)
+![screenshot](https://i.ibb.co/dmp72tq/Laravel-Movies-App-Screenshot.png)
 
 ### <a href="https://movies-app-demo.herokuapp.com/" target="_blank">Live site</a>
 
