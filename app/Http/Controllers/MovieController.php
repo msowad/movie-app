@@ -42,6 +42,8 @@ class MovieController extends Controller
             ->get(config('services.tmdb.base_url') . "/movie/$id?append_to_response=credits,images,videos")
             ->json();
 
+        abort_if(isset($movie['status_code']) && $movie['status_code'] = 34, 404);
+
         return view('movies.show', new MovieViewModel($movie));
     }
 

@@ -58,6 +58,8 @@ class ActorsController extends Controller
             ->get(config('services.tmdb.base_url') . "/person/$id")
             ->json();
 
+        abort_if(isset($actor['status_code']) && $actor['status_code'] = 34, 404);
+
         $social = Http::withToken(config('services.tmdb.token'))
             ->get(config('services.tmdb.base_url') . "/person/$id/external_ids")
             ->json();

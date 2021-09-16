@@ -64,6 +64,8 @@ class TVController extends Controller
             ->get(config('services.tmdb.base_url') . "/tv/$id?append_to_response=credits,images,videos")
             ->json();
 
+        abort_if(isset($tv['status_code']) && $tv['status_code'] = 34, 404);
+
         return view('tv.show', new TVViewModel($tv));
     }
 
