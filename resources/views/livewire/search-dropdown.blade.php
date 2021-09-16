@@ -16,7 +16,6 @@
   @endif
 
   <div wire:loading.delay wire:target="search" class="absolute left-0" style="top: -2px;">
-    <?xml version="1.0" encoding="utf-8"?>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
          style="margin: auto; background: none; display: block; shape-rendering: auto;" width="40px"
          height="40px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
