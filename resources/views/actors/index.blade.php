@@ -1,4 +1,4 @@
-<x-app-layout header="Movies">
+<x-app-layout header="Actors">
     <div class="container mx-auto pt-16">
         <div>
             <h2 class="uppercase text-lg tracking-wider text-secondary-500 font-semibold">

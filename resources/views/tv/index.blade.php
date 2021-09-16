@@ -1,4 +1,4 @@
-<x-app-layout header="Movies">
+<x-app-layout header="TV Shows">
   <div class="container mx-auto pt-16">
 
     <div>

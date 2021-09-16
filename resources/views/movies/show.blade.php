@@ -1,4 +1,4 @@
-<x-app-layout header="Movie Show">
+<x-app-layout :header="$movie['title']">
   <div class="border-b border-primary-700">
     <div class="container mx-auto py-10">
       <div class="grid gap-10 grid-cols-1 md:grid-cols-3">
