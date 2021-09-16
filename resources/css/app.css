@@ -6,19 +6,19 @@
     @apply px-4;
 }
 
-@layer utilities {
-    @variants responsive {
-        .position-initial {
-            position: initial;
-        }
+@media (min-width: 1024px) {
+    .lg\:d-block {
+        display: block !important;
+    }
+}
 
-        .d-block {
-            display: block !important;
-        }
+@media (min-width: 768px) {
+    .md\:position-initial {
+        position: initial;
+    }
 
-        .d-flex {
-            display: flex !important;
-        }
+    .md\:d-flex {
+        display: flex !important;
     }
 }
 
