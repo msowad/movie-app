@@ -13,10 +13,6 @@ composer install
 ```
 
 ```shell
-php artisan migrate --seed
-```
-
-```shell
 php artisan serve
 ```
 
