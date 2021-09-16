@@ -112,7 +112,7 @@
           </h2>
         </div>
         <div class="mt-8 overflow-x-auto bg-primary-700 rounded-lg shadow overflow-y-auto relative"
-             style="height: 800px;">
+             style="max-height: 800px;">
           <table
                  class="border-collapse table-auto w-full whitespace-no-wrap table-striped relative">
             <tbody>
